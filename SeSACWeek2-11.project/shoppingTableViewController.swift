@@ -7,83 +7,97 @@
 
 import UIKit
 
-class shoppingTableViewController: UITableViewController {
+struct shopping {
+    let shopList:String
+    let favorite:Bool
+    let bought:Bool
+}
 
+class shoppingTableViewController: UITableViewController {
+    
+    @IBOutlet var headerView: UIView!
+    @IBOutlet var shopTextField: UITextField!
+    @IBOutlet var topButton: UIButton!
+    
+    var shoppingList: [shopping] = [shopping(shopList: "아이폰", favorite: true, bought: true),shopping(shopList: "맥북", favorite: true, bought: true),shopping(shopList: "에어팟", favorite: true , bought: false),shopping(shopList: "에어팟 맥스", favorite: false, bought: false)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        headerView.backgroundColor = .lightGray
+        headerView.layer.cornerRadius = 10
+        shopTextField.placeholder = "무엇을 구매하실건가요?"
+        shopTextField.backgroundColor = .lightGray
+        topButton.setTitle("추가", for: .normal)
+        topButton.backgroundColor = .gray
+        topButton.layer.cornerRadius = 10
+        topButton.setTitle("저장", for: .normal)
+        topButton.setTitleColor(UIColor.white, for: .normal)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(#function)
+        
+        return shoppingList.count
     }
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        print(#function, indexPath)
 
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! shoppingTableViewCell
+        
+        cell.cellView.backgroundColor = .gray
+        
+        cell.shopLabel?.text = shoppingList[indexPath.row].shopList
+        
+        if shoppingList[indexPath.row].favorite == true {
+            cell.rightStarButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        }else {
+            cell.rightStarButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+        if shoppingList[indexPath.row].bought == true {
+            cell.leftCheckButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        }else {
+            cell.leftCheckButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        }
+        
+        cell.shopLabel.textColor = .black
+        cell.backgroundColor = .white
+        cell.cellView.backgroundColor = .lightGray
+        cell.cellView.layer.cornerRadius = 10
+        cell.leftCheckButton.setTitle("", for: .normal)
+        cell.rightStarButton.setTitle("", for: .normal)
+        cell.shopLabel.font = .systemFont(ofSize: 15)
+        cell.leftCheckButton.tintColor = .red
+        cell.rightStarButton.tintColor = .yellow
 
         return cell
     }
-    */
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print(#function)
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        return 60
     }
-    */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        shoppingList.remove(at: indexPath.row)
+        tableView.reloadData()
 
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    @IBAction func checkButtonClicked(_ sender: UIButton) {
+        print(#function)
+        
+        var randomBool = Bool.random()
+        var randomBool2 = Bool.random()
+        
+        if let addShoppingList = shopTextField.text {
+            if shopTextField.text!.isEmpty == false {
+                print("addShoppingList 출력")
+                shoppingList.append(shopping(shopList: addShoppingList , favorite:randomBool, bought: randomBool2))
+                tableView.reloadData()
+            }
+        } else {
+            print("출력 불가")
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -9,15 +9,11 @@ import UIKit
 
 class shoppingTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet var cellView: UIView!
+    @IBOutlet var shopLabel: UILabel!
+    @IBOutlet var rightStarButton: UIButton!
+    @IBOutlet var leftCheckButton: UIButton!
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
