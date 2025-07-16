@@ -8,330 +8,225 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var gameTextField: UITextField!
     
     @IBOutlet var resultTextView: UITextView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let gameText = gameTextField.text, let int369 = Int(gameText) {
-//            print("결과는: \(int369) ")
-//        } else {
-//            print("다시 입력하세요")
-//        }
-//        
-//        if game369 != nil {
-//            var game369 = game369!
-//            var intGame369 = Int(game369)
-//            if list[intGame369! - 1] == intGame369! {
-//                resultTextView.text = "결과는 \(intGame369!)"
-//            }
-//        } else {
-//            print("nil")
-//        }
-//        if let game369 = gameText {
-//            print("\(game369) nil이 아님")
-//            if let int369 = Int(game369) {
-//                print("\(int369)nil이 아님")
-//                if int369 == list[int369 - 1] {
-//                    resultTextView.text = String(int369)
-//                } else {
-//                    print("흠")
-//                }
-//            } else {
-//                print("nil")
-//            }
-//        } else {
-//            print("nil...")
-//        }
-//       if let
+        resultTextView.sizeToFit()
         
+        /*
+         반복문, 항변환, 배열(contains) + 인덱스
+         
+         
+         13
+         "13" // 3이 들었는지 알고싶어
+         "13".contains("3") // Boolean
+         배열 -> 인덱스 ->  박수
+         */
         
-    }
-    @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
-        //입력받은 숫자 1부터 반복문으로 나열해서 배열 만들어
-        //1부터 십의자리/일의자리 369에 해당하는지 조건문으로 확인 후
-        //해당되는것만 박수 이모지로 대체
-        var list: [String] = []
-        var list2: [Int] = []
-
-        if let gameText = gameTextField.text, let int369 = Int(gameText) {
-            print("입력값: \(int369) ")
-            
-            var clap = "👏"
-            //int369 == 9
-            for i in 1...int369 {
-                list2.append(i)
-                
-                
-                
-                
-                
-            }
-            print("리스트 \(list2)")
-            
-            let a = int369 / 10 //십의자리
-            let b = int369 % 10 //일의자리
-            print("\(a), \(b)")
-            
-            
-//            if a > 0 {
-//                if a % 3 == 0 || b % 3 == 0 {
+//        func convertInt() ->Int {
+//            var aa = gameTextField.text
+//            var bb:Int? = 0
+//            if aa != nil {
+//                bb = Int(aa!)
+//                if bb != nil {
+//                    print("nil x")
 //                    
-//                    print("십의자리 나눔")
-//                    resultTextView.text = String(int369)
-//                    for j in list2 {
-//                        if a % 3 == 0 {
-//                            list2[a-1] = 888
-//                            print("888로 대체?\(list2)")
-//                        }else if b % 3 == 0 {
-//                            list2[b-1] = 999
-//                            print("999로 대체")
-//                            
-//                        }
-//                    }
-//                }
-//                if b % 3 == 0 {
-//                    print("십/일의자리 나눔")
-//                    resultTextView.text = String(int369)
-//                    for j in list2 {
-//                        if j == 3 || j == 6 || j == 9 {
-//                            list2[j-1] = 999
-//                            print("999로 대체?\(list2)")
-//                        }else {
-//                            print("999 대체 안됨")
-//                            
-//                        }
-//                    }
-//                    
-//                    
-//                }
-//            }
-//            if b > 0 {
-//                if b % 3 == 0 {
-//                    print("일의자리 나눔")
-//                    //                   var gameText = "" + clap
-//                    resultTextView.text = String(int369)
-//                    for i in list2 {
-//                        if i == 3 || i == 6 || i == 9 {
-//                            list2[i-1] = 777
-//                            print("777로 대체?\(list2)")
-//                        }else {
-//                            print("777 대체 안됨")
-//                            
-//                        }
-//                    }
-//                    
-//                    
+//                }else {
+//                    print("nil o")
 //                }
 //            }else {
-//                print("3,6,9 아님")
+//                print("nil oo")
 //            }
-                
-               
-            
-            
-//            for i in 1...int369 {
-//                if int369 > 0 && int369 < 10 {
-//                    if int369 / 3 == 0 {
-//                        print("결과는 \(int369)")
-//                        for i in 1...int369 {
-//                            list2.append(i)
-//                        }
-//                    }
-//                }else if int369 >= 10 {
-//                    if a == 3 || a == 6 || a == 9 {
-//                        
-//                    }
-//                }
-//            }
-            
-            //43 예시
-//            var minusint369 = int369
-//            
-//            while minusint369 >= 10 {
-//                minusint369 = minusint369 - 10
-//            }
-//            print("10이하로 뺀 값 \(minusint369)")
-////            list2.append(i)
-//            for i in 1...int369 {
-//                if minusint369 == 0 || minusint369 == 3 || minusint369 == 6 || minusint369 == 9 {
-//                    
+//            return bb!
+//        }
+//        
+//        var cc = convertInt()
 //
+//        print("\(cc)zzz")// 완전 잘됨 다른곳에서,,>>뷰디드로드에 쓰면 런타임 에러남
+        
+//        func convertInt() ->Int {
+//            var textFieldText = gameTextField.text
+//            var bb = 0
+//            if textFieldText != nil {
+//                var bb = Int(textFieldText!)
+//                if bb != nil {
+//                    print("nil x")
+//                    
+//                }else {
+//                    print("nil o")//여기서 문제생김
+//                }
+//            }else {
+//                print("nil oo")
+//            }
+//            return bb
+//        }
+//        
+//        var cc = convertInt()
+//
+//        print("\(cc)zzz")//0이라고 반환됨
+
+//        func convertInt() ->Int {
+//            var textFieldText = gameTextField.text
+//            var bb = 0
+//            if textFieldText != nil {
+//                bb = Int(textFieldText!)!
+//                if bb != nil {
+//                    print("nil x")
+//                    
+//                }else {
+//                    print("nil o")
+//                }
+//            }else {
+//                print("nil oo")
+//            }
+//            return bb //여기다가 bb를 쓰면 bb값이 없다고 하고 위에다가 쓰면 리턴을 안해줬다고 하고..
+//        }
+//        
+//        var cc = convertInt()
+//
+//        print("\(cc)zzz")
+
+        
+    }
+
+    
+    
+
+    
+    
+    @IBAction func textFieldDidEndOnExit(_ sender: UITextField) {
+        
+        func convertInt() ->Int {
+            var aa = gameTextField.text
+            var bb:Int? = 0
+            if aa != nil {
+                bb = Int(aa!)
+                if bb != nil {
+                    print("nil x")
+                    
+                }else {
+                    print("nil o")
+                }
+            }else {
+                print("nil oo")
+            }
+            return bb!
+        }
+        
+        var cc = convertInt()
+        
+        print("\(cc)zzz")// 완전 잘됨
+        
+        var list: [Int] = []
+        var strList: [String] = []
+        
+        for i in 1...cc {
+            list.append(i)
+        }
+        print("\(list)....")
+        
+        //리스트의 요소들 다시 스트링으로 변환 스트링 배열에 추가
+        
+        var dd: String? = ""
+        
+        for j in list {
+            dd = String(j)
+            if dd != nil {
+                strList.append(dd!)
+                
+            }else {
+                print("nil ooo")
+            }
+            
+        }
+        print("\(strList)qqq")
+        
+//        for k in strList {
+//            print(k)
+//            for u in list {
+//                if k.contains("3") { // 아래 수정한거랑 뭔 차인지..
+//
+//                    strList[u-1] = "👏"//???????????여기서 문제
 //                }
 //                
 //            }
-            
-            
-//            for i in 1...int369 {
-//                if gameText == "3" || gameText == "6" || gameText == "9" {
-//                    var clapText = gameText
-//                    clapText = clap
-//                    list.append(clapText)
-//                    print("3,6,9 \(list)")
-//                    
-//                    
-//                }else {
-//                    var j = String(i)
-//                    list.append(j)
-//                    print("3,6,9 아닌\(list)")//안됨
-//
-//                }
-//            }
-//            print(list)
-            
-            //
-//            var num = 0
-//            var minusint369 = int369
-//            while minusint369 >= 10 {
-//                minusint369 = minusint369 - 10
-//            }
-//            print("10이하로 뺀 값 \(minusint369)")
-//            
-//            var list: [String] = []
 //        
-//            print(list)
-//            
-//            var clap = "👏"
-//            var strMinusint369 = String(minusint369)
-//            strMinusint369 = clap
-//            
-//            if minusint369 == 3 || minusint369 == 6 || minusint369 == 9 {
-         
-//            for a in 1...int369 {
-                
-//                if  minusint369 == 3 || minusint369 == 6 || minusint369 == 9 {
-//                    var strMinusint369 = String(minusint369)
-//                    strMinusint369 = clap
-//                    list.append(clap)
-//                    print(list)
-//                    
-//                    print(strMinusint369)
-//                }else if minusint369 == 0  {
-//                    
-//                }else if minusint369 == 32345{
-//                    
-//                }else {
-//                   
-//                    list.append()
-//                    print(list)
-//                    
-//                }
-                    
-                
-//            }
-            
-//            for a in 1...int369 {
-//                if a < 10 && a > 0 {
-//                    
-//                } else {
-//                 var num = 0
-//                 var a = a - 10
-//                print(a)
-//                }
-//            }
-//            for a in 1...int369 {
-//                if (int369 % 10) == 3 || (int369 % 10) == 6 || (int369 % 10) == 9 {
-//                    for a in 1...int369 {
-//                        print(a)
-//                        list.append(a)
-//
-//                        if (a % 10) == 3 || (a % 10) == 6 || (a % 10) == 9 || (a / 10) == 3 || (a / 10) == 6 || (a / 10) == 9  {
-//                            var a = "👏"
-//                            resultTextView.text = "결과: \(list)"
-//                        }
-//                    }
-//                }else if (int369 % 10) == 6 {
-//                    for b in 1...int369 {
-//                        if b % 10 == 6 {
-//                            var b = "👏"
-//                            print(b)
-//                            resultTextView.text = "결과 \(b)"
-//                        }
-//                        
-//                    }
-//                }else if (int369 % 10) == 9 {
-//                    for c in 1...int369 {
-//                        if c % 10 == 9 {
-//                            var c = "👏"
-//                            print(c)
-//                            resultTextView.text = "결과 \(c)"
-//                        }
-//                        
-//                    }
-//                }else if (int369 / 10) == 3 {
-//                    for d in 1...int369 {
-//                        if d / 10 == 3 {
-//                            var d = "👏"
-//                            print(d)
-//                            resultTextView.text = "결과 \(d)"
-//                        }
-//                        
-//                    }
-//                    
-//                }else if (int369 / 10) == 6 {
-//                    for e in 1...int369 {
-//                        if e / 10 == 6 {
-//                            var e = "👏"
-//                            print(e)
-//                            resultTextView.text = "결과 \(e)"
-//                        }
-//                        
-//                    }
-//                    
-//                }else if (int369 / 10) == 9 {
-//                    for f in 1...int369 {
-//                        if f / 10 == 9 {
-//                            var f = "👏"
-//                            print(f)
-//                            resultTextView.text = "결과 \(f)"
-//                        }
-//                       
-//                    }
-//                    
-//                }else if int369 == 3 {
-//                    
-//                }else if int369 == 6 {
-//                    
-//                }else if int369 == 9 {
-//                    
-//                }else {
-//                    print("3,6,9 포함 노")
-//                    resultTextView.text = "3,6,9 포함되지 않음"
-//                    
-//                }
-//              
-//            }
-//            if list[int369 - 1] == int369 {
-//                for j in 1...int369 {
-//                    print(j)
-//                    if list {
-//                        
-//                    }
-//                }
-//            }
-
-            
-            
-            
-            
-            
-            
-//            resultTextView.text = String(int369)//마지막에
-            
-            
-        } else {
-            print("다시 입력하세요")
-        }
-    }
-    
-
+//        }
+//        print("\(strList)ppppp")
         
-    
-    
-    
-}
-
+        for k in strList {
+            print(k)
+            for u in list {
+                if strList[u-1].contains("3") {
+                    
+                    strList[u-1] = "👏"
+                }
+                
+            }
+        
+        }
+        print("\(strList)ppppp")
+        
+        for k in strList {
+            print(k)
+            for u in list {
+                if strList[u-1].contains("6") {
+                    
+                    strList[u-1] = "👏"
+                }
+                
+            }
+        
+        }
+        print("\(strList)ㅁㅁㅁㅁ")
+        
+        for k in strList {
+            print(k)
+            for u in list {
+                if strList[u-1].contains("9") {
+                    
+                    strList[u-1] = "👏"
+                }
+                
+            }
+        
+        }
+        print("\(strList)ppppp")
+        
+        let joinedString = strList.joined(separator: ", ")
+        resultTextView.text = joinedString
+        
+        
+        
+        //해결과정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+//        func convertInt() ->Int {
+//            var textFieldText = gameTextField.text
+//            var bb = 0 // 나중에 bb에 담을 값이 옵셔널 인트니까 여기도 옵셔널로 선언하고 초기값 담아줘야
+//            if textFieldText != nil {
+//                var bb = Int(textFieldText!) //여기도 문제 위에서 var bb 해놓고 또 var,,를,,,bb = Int(textFieldText!)랑 var textFieldText = gameTextField.text 똑같이 옵셔널값을 담아주는 변수를 생성하는 과정인데 왜 bb에서만 에러가 나는건지>> bb가 처음에 '0'이라는 옵셔널이 아닌 정수로 선언이 돼서 스트링을 정수로 변환하면 옵셔널이 되니까 타입이 달라서 문제
+//                if bb != nil {
+//                    print("nil x")
+//                    
+//                }else {
+//                    print("nil o")
+//                }
+//            }else {
+//                print("nil oo")
+//            }
+//            return bb //여기다가 bb를 쓰면 bb값이 없다고 하고 위에다가 쓰면 리턴을 안해줬다고 하고..
+//        }
+//        
+//        var cc = convertInt()
 //
+//        print("\(cc)zzz")
+ 
+    }
+
+}

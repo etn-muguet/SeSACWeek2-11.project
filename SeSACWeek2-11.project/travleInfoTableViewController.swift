@@ -19,6 +19,11 @@ struct Travel {
     let ad: Bool?
 }
     
+    
+
+
+class travleInfoTableViewController: UITableViewController {
+    
     let travel: [Travel] = [
         Travel(title: "하나우마 베이",
                description: "아름다운 자연을 감상할 수 있는 스노쿨링 명소",
@@ -127,9 +132,6 @@ struct Travel {
                ad: false),
     ]
 
-
-
-class travleInfoTableViewController: UITableViewController {
     
     @IBOutlet var topLabel: UILabel!
     
@@ -149,9 +151,11 @@ class travleInfoTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "travelCell", for: indexPath) as! travelTableViewCell
         
+        let row = travel[indexPath.row]
+        
         if travel[indexPath.row].ad == false {
             
-            cell.adView.backgroundColor = .white
+            cell.adView.backgroundColor = .clear
             cell.adLabel.text = ""
             cell.adWhiteLabel.text = ""
             
@@ -278,17 +282,19 @@ class travleInfoTableViewController: UITableViewController {
                 if travel[indexPath.row].like == true {
                     cell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     cell.heartButton.tintColor = .systemRed
+              
+                    
                 } else {
                     cell.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     cell.heartButton.tintColor = .white
+
                 }
             }else {
                 print("라이크 nil임")
             }
-            
+
         }
-        
-        
+   
         //광고
       
         let adViewColorRandom: [UIColor] = [.systemMint, .systemPink, .systemOrange, .systemGreen]
@@ -310,7 +316,8 @@ class travleInfoTableViewController: UITableViewController {
                 cell.star5.image = UIImage(named: ""    )
                 cell.gradeLabel.text = ""
                 cell.saveLabel.text = ""
-                
+
+              
                 cell.adView.backgroundColor = adViewColorRandom.randomElement()
                 cell.adView.layer.cornerRadius = 10
                 
@@ -325,17 +332,13 @@ class travleInfoTableViewController: UITableViewController {
                 cell.adWhiteLabel.font = .systemFont(ofSize: 15, weight: .semibold)
                 cell.adWhiteLabel.backgroundColor = .white
                 cell.adWhiteLabel.textAlignment = .center
-                //광고 가장자리 둥글게?
+                
                 
             } else {
                 print("광고 nil임")
             }
         }
-        
-        
-        
-        
-        
+ 
         return cell
     }
     
@@ -347,7 +350,39 @@ class travleInfoTableViewController: UITableViewController {
             return 80
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        if travel[indexPath.row].ad == false {
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc1 = sb.instantiateViewController(withIdentifier: "DetailInfoViewController") as! DetailInfoViewController
+            
+            vc1.transImage = URL(string:travel[indexPath.row].travel_image!)
+            vc1.transTitle = travel[indexPath.row].title
+            vc1.transSubTitle = travel[indexPath.row].description
+            
+            
+            navigationController?.pushViewController(vc1, animated: true)
+            
+            
+            
+        }else {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc2 = sb.instantiateViewController(withIdentifier: "AdInfoViewController") as! AdInfoViewController
+            
+            vc2.modalTransitionStyle = .coverVertical
+            vc2.modalPresentationStyle = .fullScreen
+            
+            
+            vc2.transTitle = travel[indexPath.row].title
+            
+            
+            present(vc2, animated: true)
+            
+            
+        }
+
     }
 }
