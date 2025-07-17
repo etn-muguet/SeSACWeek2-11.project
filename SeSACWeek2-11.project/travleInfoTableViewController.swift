@@ -15,7 +15,7 @@ struct Travel {
     let travel_image: String?
     let grade: Double?
     let save: Int?
-    let like: Bool?
+    var like: Bool?
     let ad: Bool?
 }
     
@@ -277,16 +277,19 @@ class travleInfoTableViewController: UITableViewController {
                 }
             }
             
+     
             if travel[indexPath.row].like != nil {
                 print("라이크 nil 아님")
                 if travel[indexPath.row].like == true {
                     cell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     cell.heartButton.tintColor = .systemRed
+                    //cell.heartButtonClicked(cell.heartButton)//
               
                     
                 } else {
                     cell.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     cell.heartButton.tintColor = .white
+                    //cell.heartButtonClicked(cell.heartButton)//
 
                 }
             }else {

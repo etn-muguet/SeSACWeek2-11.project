@@ -148,56 +148,56 @@ class ViewController: UIViewController {
         }
         print("\(strList)qqq")
         
+        // 3을 입력하면 k가 "1"일 때 u는 1,2,3 총 세번을 돌고
+        //다시 k가 "2"일 때 u는 1,2,3을 돈다
+        //k가 "3"이 되면 u가 세번 도는 동안 k는 계속 "3"이므로 조건문에 걸려서
+        //스트링배열의 인덱스 0,1,2번이 전부 박수로 대체됨
 //        for k in strList {
-//            print(k)
+//            print("\(k)kkk")
 //            for u in list {
+//                print("\(u)uuu")
 //                if k.contains("3") { // 아래 수정한거랑 뭔 차인지..
+//                    print("\(strList[u-1])잉")
 //
 //                    strList[u-1] = "👏"//???????????여기서 문제
 //                }
-//                
 //            }
 //        
 //        }
 //        print("\(strList)ppppp")
         
-        for k in strList {
-            print(k)
-            for u in list {
-                if strList[u-1].contains("3") {
-                    
-                    strList[u-1] = "👏"
-                }
-                
+        for u in list {
+            if strList[u-1].contains("3") {
+                strList[u-1] = "👏"
             }
-        
+            
         }
+        
+        
         print("\(strList)ppppp")
         
-        for k in strList {
-            print(k)
-            for u in list {
-                if strList[u-1].contains("6") {
-                    
-                    strList[u-1] = "👏"
-                }
-                
-            }
         
+        for u in list {
+            if strList[u-1].contains("6") {
+                
+                strList[u-1] = "👏"
+            }
+            
         }
+        
+        
         print("\(strList)ㅁㅁㅁㅁ")
         
-        for k in strList {
-            print(k)
-            for u in list {
-                if strList[u-1].contains("9") {
-                    
-                    strList[u-1] = "👏"
-                }
-                
-            }
         
+        for u in list {
+            if strList[u-1].contains("9") {
+                
+                strList[u-1] = "👏"
+            }
+            
         }
+        
+        
         print("\(strList)ppppp")
         
         let joinedString = strList.joined(separator: ", ")
