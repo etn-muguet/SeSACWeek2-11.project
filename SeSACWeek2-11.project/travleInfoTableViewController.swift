@@ -24,7 +24,7 @@ struct Travel {
 
 class travleInfoTableViewController: UITableViewController {
     
-    let travel: [Travel] = [
+    var travel: [Travel] = [
         Travel(title: "하나우마 베이",
                description: "아름다운 자연을 감상할 수 있는 스노쿨링 명소",
                travel_image: "https://images.unsplash.com/photo-1539498508910-091b5e859b1d?q=80&w=3250&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -134,6 +134,13 @@ class travleInfoTableViewController: UITableViewController {
 
     
     @IBOutlet var topLabel: UILabel!
+    
+    @objc func heartButtonClicked(_ sender: UIButton) {
+        travel[sender.tag].like?.toggle()
+ 
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .top)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -277,19 +284,21 @@ class travleInfoTableViewController: UITableViewController {
                 }
             }
             
+            cell.heartButton.tag = indexPath.row
+            cell.heartButton.addTarget(self, action: #selector(heartButtonClicked), for: .touchUpInside)
      
             if travel[indexPath.row].like != nil {
                 print("라이크 nil 아님")
                 if travel[indexPath.row].like == true {
                     cell.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     cell.heartButton.tintColor = .systemRed
-                    //cell.heartButtonClicked(cell.heartButton)//
+                    
               
                     
                 } else {
                     cell.heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     cell.heartButton.tintColor = .white
-                    //cell.heartButtonClicked(cell.heartButton)//
+                    
 
                 }
             }else {
@@ -297,7 +306,7 @@ class travleInfoTableViewController: UITableViewController {
             }
 
         }
-   
+       
         //광고
       
         let adViewColorRandom: [UIColor] = [.systemMint, .systemPink, .systemOrange, .systemGreen]

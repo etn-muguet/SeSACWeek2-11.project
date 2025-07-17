@@ -55,30 +55,30 @@ class travelTableViewCell: UITableViewCell {
 
     }
 
-    @IBAction func heartButtonClicked(_ sender: UIButton) {
-        
-        sender.isSelected.toggle()
-        
-//        let row: Travel
-
-        if sender.isSelected {
-//            row.like = false
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            sender.tintColor = .white
-            
-            
-            
-            
-       
-        }else {
-            sender.tintColor = .systemRed
-            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-          
-        }
+//    @IBAction func heartButtonClicked(_ sender: UIButton) {
+//        
+//        sender.isSelected.toggle()
+//        
+////        let row: Travel
+//
+//        if sender.isSelected {
+////            row.like = false
+//            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+//            sender.tintColor = .white
+//            
+//            
+//            
+//            
+//       
+//        }else {
+//            sender.tintColor = .systemRed
+//            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//          
+//        }
         
         
         
    
-    }
+//    }
     
 }

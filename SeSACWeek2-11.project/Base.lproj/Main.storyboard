@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,9 +77,6 @@
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain"/>
-                                            <connections>
-                                                <action selector="heartButtonClicked:" destination="W6p-RN-NQ4" eventType="touchUpInside" id="CXO-KA-e4t"/>
-                                            </connections>
                                         </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G39-Jg-BeO">
                                             <rect key="frame" x="20" y="59.333333333333343" width="15" height="15"/>
@@ -519,7 +517,69 @@
             </objects>
             <point key="canvasLocation" x="-927.48091603053433" y="810.56338028169023"/>
         </scene>
-        <!--Item-->
+        <!--인기도시 컬렉션뷰-->
+        <scene sceneID="eGp-FF-UJ4">
+            <objects>
+                <viewController storyboardIdentifier="PopularCityViewController" id="8hr-h9-s0R" customClass="PopularCityViewController" customModule="SeSACWeek2_11_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UEO-ck-YuD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s9y-YF-gFG">
+                                <rect key="frame" x="20" y="118" width="353" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="q5Z-3c-oss"/>
+                                </constraints>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Md-SN-QbA">
+                                <rect key="frame" x="0.0" y="149" width="393" height="586"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Qx7-dd-Vva">
+                                    <size key="itemSize" width="240" height="181"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LS8-cg-Iky">
+                                        <rect key="frame" x="76.666666666666671" y="0.0" width="240" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z8W-0I-NUU">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="181"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="240" height="181"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Cm8-Ls-F3T"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cm8-Ls-F3T" firstAttribute="trailing" secondItem="s9y-YF-gFG" secondAttribute="trailing" constant="20" id="C97-sD-DhA"/>
+                            <constraint firstItem="9Md-SN-QbA" firstAttribute="leading" secondItem="Cm8-Ls-F3T" secondAttribute="leading" id="EgP-Qu-sa4"/>
+                            <constraint firstItem="Cm8-Ls-F3T" firstAttribute="bottom" secondItem="9Md-SN-QbA" secondAttribute="bottom" id="Lcj-Gb-ojW"/>
+                            <constraint firstItem="s9y-YF-gFG" firstAttribute="top" secondItem="Cm8-Ls-F3T" secondAttribute="top" id="OP4-UG-FUv"/>
+                            <constraint firstItem="s9y-YF-gFG" firstAttribute="leading" secondItem="Cm8-Ls-F3T" secondAttribute="leading" constant="20" id="lny-Zt-c3M"/>
+                            <constraint firstItem="9Md-SN-QbA" firstAttribute="top" secondItem="s9y-YF-gFG" secondAttribute="bottom" id="rjg-wU-F1k"/>
+                            <constraint firstItem="Cm8-Ls-F3T" firstAttribute="trailing" secondItem="9Md-SN-QbA" secondAttribute="trailing" id="rxp-mL-lpG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="인기도시 컬렉션뷰" image="6.lane" catalog="system" id="SQU-uZ-RpA"/>
+                    <connections>
+                        <outlet property="myCollectionView" destination="9Md-SN-QbA" id="DQ2-M6-1hB"/>
+                        <outlet property="mySegmentedControl" destination="s9y-YF-gFG" id="EvN-xo-ODu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pc3-FT-mo8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-956.48854961832058" y="-735.21126760563379"/>
+        </scene>
+        <!--인기도시 테이블뷰-->
         <scene sceneID="PCx-hS-OWV">
             <objects>
                 <viewController storyboardIdentifier="PopularViewController" id="lyH-tn-VQM" customClass="PopularViewController" customModule="SeSACWeek2_11_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -565,7 +625,7 @@
                             <constraint firstItem="hiE-rP-uqO" firstAttribute="top" secondItem="s4M-wa-b83" secondAttribute="bottom" constant="2" id="y9k-kP-dJo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="5.lane" catalog="system" id="PuR-ew-Ac1"/>
+                    <tabBarItem key="tabBarItem" title="인기도시 테이블뷰" image="5.lane" catalog="system" id="PuR-ew-Ac1"/>
                     <connections>
                         <outlet property="myTableView" destination="hiE-rP-uqO" id="Exd-p5-5LQ"/>
                     </connections>
@@ -590,6 +650,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3zL-eF-SUe"/>
                         <segue destination="pvl-FH-AdL" kind="relationship" relationship="viewControllers" id="5iL-fY-rlb"/>
                         <segue destination="lyH-tn-VQM" kind="relationship" relationship="viewControllers" id="bJm-db-Eav"/>
+                        <segue destination="8hr-h9-s0R" kind="relationship" relationship="viewControllers" id="hAO-0x-JSd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fzf-Vp-IUY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -716,6 +777,7 @@
         <image name="3.lane" catalog="system" width="128" height="97"/>
         <image name="4.lane" catalog="system" width="128" height="97"/>
         <image name="5.lane" catalog="system" width="128" height="97"/>
+        <image name="6.lane" catalog="system" width="128" height="97"/>
         <image name="imagedataprovider-sample.png" width="125" height="125"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="123"/>
         <image name="square.and.arrow.down.badge.xmark.fill" catalog="system" width="126" height="128"/>
